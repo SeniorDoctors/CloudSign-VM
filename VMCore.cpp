@@ -27,7 +27,7 @@ int full_sp() {
   return sp == MAXMEM ? 1 : 0;
 }
 
-void decoder(int instr) {
+void VMDecoder(int instr) {
     switch (instr) {
         case PUSH: {
             // Проверяем, есть ли место в памяти
@@ -113,13 +113,13 @@ void decoder(int instr) {
             printf("PRINT Stack[%u]: %u\n", sp, stack[sp]);
             break;
         }
-        case ENTER: {
-            printf("ENTER NEW VAR: 201527\n");
-            sp++;
-            int pass = 201527;
-            memcpy(&stack[sp], &pass, 5);
-            break;
-        }
+//         case ENTER: {
+//             printf("ENTER NEW VAR: 201527\n");
+//             sp++;
+//             int pass = 201527;
+//             memcpy(&stack[sp], &pass, 5);
+//             break;
+//         }
         case EXIT: {
             // Установка глобальной переменной в FALSE,
             // чтобы прервать работу VM
@@ -134,7 +134,7 @@ void decoder(int instr) {
 
 void VMStart() {
     while (VM) { // Переменная, которая контролирует работу VM
-        decoder(code[ip]);
+        VMDecoder(code[ip]);
         ip++;
       }
 }
