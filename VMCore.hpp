@@ -5,7 +5,7 @@
 void VMStart();
 int empty_sp();
 int full_sp();
-void decoder(int instr);
+void VMDecoder(int instr);
 
 // Поддерживаемые мнемоники VM
 typedef enum {
@@ -53,10 +53,7 @@ const int code[] = {
     RAM,
     ADD,
     POP,
-    POP,
-    ENTER,
     PRINT,
-    TEST,
     EXIT
 };
 
